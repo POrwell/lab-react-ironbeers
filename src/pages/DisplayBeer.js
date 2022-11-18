@@ -5,7 +5,7 @@ import axios from "axios";
 
 function DisplayBeer() {
     const { beerId } = useParams()
-const [displayBeer, setDisplayBeer] = useState([])
+const [displayBeer, setDisplayBeer] = useState()
 
 useEffect(() => {
     const fetchDisplayBeer = async () => {
@@ -14,7 +14,7 @@ useEffect(() => {
         setDisplayBeer(response.data)
     }
     fetchDisplayBeer();
-})
+}, [] )
     return displayBeer ? (
 <>
 <Navbar/>
