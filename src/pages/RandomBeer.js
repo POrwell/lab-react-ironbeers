@@ -16,7 +16,7 @@ useEffect(() => {
 <>
 <Navbar/>
 <div>
-<img className="Image" src={randomBeer.image_url} />
+<img className="Image" src={randomBeer.image_url} alt="beer bottle/keg"/>
 <h2>{randomBeer.name}</h2>
 <p>{randomBeer.tagline}</p>    
 <p>{randomBeer.first_brewed}</p>    

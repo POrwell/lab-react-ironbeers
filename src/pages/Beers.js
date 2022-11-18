@@ -1,10 +1,9 @@
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
 
-function Beers() {
-const [beers, setBeers] = useState([])
+function Beers({beers, setBeers}) {
 useEffect(() => {
     const fetchBeers = async () => {
         let response = await axios.get("https://ih-beers-api2.herokuapp.com/beers");
@@ -18,7 +17,7 @@ useEffect(() => {
 <Navbar/>
 {beers.map((beer) =>
 <Link className="Link" key={beer._id} to={`/beers/${beer._id}`}>
-<img className="Image" src={beer.image_url}/>
+<img className="Image" src={beer.image_url} alt="some beer"/>
 <p>{beer.name}</p>
 <p>{beer.tagline}</p>
 <p>{beer.contributed_by}</p>
