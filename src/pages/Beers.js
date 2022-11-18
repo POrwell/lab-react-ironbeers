@@ -8,7 +8,7 @@ const [beers, setBeers] = useState([])
 useEffect(() => {
     const fetchBeers = async () => {
         let response = await axios.get("https://ih-beers-api2.herokuapp.com/beers");
-        console.log(response.data)
+        
         setBeers(response.data)
     }
     fetchBeers();
@@ -17,7 +17,7 @@ useEffect(() => {
 <>
 <Navbar/>
 {beers.map((beer) =>
-<Link className="Link" key={beer._id} to="/beers/:beerId">
+<Link className="Link" key={beer._id} to={`/beers/${beer._id}`}>
 <img className="Image" src={beer.image_url}/>
 <p>{beer.name}</p>
 <p>{beer.tagline}</p>
