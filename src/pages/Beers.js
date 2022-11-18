@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import axios from "axios";
+import Search from "../components/Search"
 
 function Beers({beers, setBeers}) {
+const [query, setQuery] = useState("")
 useEffect(() => {
     const fetchBeers = async () => {
         let response = await axios.get("https://ih-beers-api2.herokuapp.com/beers");
@@ -15,7 +17,10 @@ useEffect(() => {
     return(
 <>
 <Navbar/>
-{beers.map((beer) =>
+<div className="Search">
+<Search className="Search" query={query} setQuery={setQuery}/>
+</div>
+{beers.filter((beer) => beer.name.toLowerCase().includes(query.toLowerCase())).map((beer) =>
 <Link className="Link" key={beer._id} to={`/beers/${beer._id}`}>
 <img className="Image" src={beer.image_url} alt="some beer"/>
 <p>{beer.name}</p>
